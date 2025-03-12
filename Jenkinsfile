@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        NETLIFY_AUTH_TOKEN = credentials("netlify-personal-access-token")
+        // NETLIFY_AUTH_TOKEN = credentials("netlify-personal-access-token")
         NETLIFY_SITE_ID = "${env.NETLIFY_SITE_ID}"
     }
 
