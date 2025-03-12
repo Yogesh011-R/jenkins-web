@@ -20,12 +20,12 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                echo 'Hello Checkout'
-                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/Veverita-Engineering/Customer-Portal'
-            }
-        }
+        // stage('Checkout') {
+        //     steps {
+        //         echo 'Hello Checkout'
+        //         git branch: 'main', changelog: false, poll: false, url: 'https://github.com/Veverita-Engineering/Customer-Portal'
+        //     }
+        // }
         stage('Build') {
             steps {
                 echo 'Hello Build'
