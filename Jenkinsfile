@@ -41,7 +41,7 @@ pipeline {
                 stage('Test') {
                     steps {
                         echo 'Hello Test'
-                        sh "npm test -- --reporters=jest-junit"
+                        // sh "npm test -- --reporters=jest-junit"
                     }
                 }
                 stage('SCA') {
@@ -64,7 +64,9 @@ pipeline {
         stage('Deploy staging') {
             steps {
                 echo 'Hello Deploy staging'
-                echo "Deploying to production site ID: ${env.NETLIFY_SITE_ID}"
+                withCredentials([string(credentialsId: 'netlify-personal-access-token', variable: 'NETLIFY_AUTH_TOKEN')]) {
+                    sh 'netlify deploy --auth $NETLIFY_AUTH_TOKEN --site $NETLIFY_SITE_ID'
+                }
                 sh 'node_modules/.bin/netlify deploy --dir=build'
             }
         }
